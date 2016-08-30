@@ -47,9 +47,19 @@
     "requirePorts": true,
     {{/service.bridge}}
     "env": {
+        {{#service.enterprise.enabled}}
+        "DCOS_SERVICE_ACCOUNT_CREDENTIAL": { "secret": "serviceCredential" },
+        {{/service.enterprise.enabled}}
         "ART_SERVICE_NAME": "{{artifactory.name}}",
         "ART_API_KEY": "{{artifactory.api-key}}"
     },
+    {{#service.enterprise.enabled}}
+    "secrets": {
+        "serviceCredential": {
+        "source": "{{service.enterprise.service_account_secret}}"
+        }
+    },
+    {{/service.enterprise.enabled}}
     "healthChecks": [
     {
       "path": "/",

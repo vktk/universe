@@ -56,6 +56,24 @@
           "required": [
             "enabled"
           ]
+        },
+        "enterprise": {
+          "description": "Settings to use if running Artifactory-lb on Enterprise DC/OS.",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "description": "Set this to enabled if you are using Enterprise DC/OS.",
+              "type": "boolean",
+              "default": false
+            },
+            "service_account_secret": {
+              "description": "The name of a DC/OS secret to use as a service account private key.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "enabled"
+          ]
         }
       },
       "required": [
@@ -66,7 +84,7 @@
       ]
     },
     "artifactory": {
-      "description": "Artifactory-lb service properties",
+      "description": "Artifactory service properties",
       "type": "object",
       "properties": {
         "name": {
